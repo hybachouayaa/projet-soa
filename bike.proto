@@ -1,0 +1,40 @@
+syntax = "proto3";
+package bike;
+// Définition du message bike
+message Bike {
+string id = 1;
+string title = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les films au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes d
+message GetBikeRequest {
+string bike_id = 1;
+}
+message GetBikeResponse {
+Bike bike = 1;
+}
+message SearchBikesRequest {
+string query = 1;
+}
+message SearchBikesResponse {
+repeated Bike bikes = 1;
+}
+message CreateBikeRequest {
+    string title = 1;
+    string description = 2;
+  }
+  
+  message CreateBikeResponse {
+    Bike bike = 1;
+  }
+
+  
+// Définition du service de films
+service BikeService {
+    rpc GetBike(GetBikeRequest) returns (GetBikeResponse);
+    rpc SearchBikes(SearchBikesRequest) returns (SearchBikesResponse);
+    rpc CreateBike(CreateBikeRequest) returns (CreateBikeResponse);
+
+// Ajouter d'autres méthodes au besoin
+}

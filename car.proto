@@ -1,0 +1,38 @@
+syntax = "proto3";
+package car;
+// Définition du message car
+message Car {
+string id = 1;
+string title = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les séries TV au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes 
+message GetCarRequest {
+string car_id = 1;
+}
+message GetCarResponse {
+Car car = 1;
+}
+message SearchCarsRequest {
+string query = 1;
+}
+message SearchCarsResponse {
+repeated Car cars = 1;
+}
+message CreateCarRequest {
+    string title = 1;
+    string description = 2;
+  }
+  
+  message CreateCarResponse {
+    Car car = 1;
+  }
+
+// Définition du service de séries TV
+service CarService {
+rpc GetCar(GetCarRequest) returns (GetCarResponse);
+rpc SearchCars(SearchCarsRequest) returns (SearchCarsResponse);
+rpc CreateCar(CreateCarRequest) returns (CreateCarResponse);
+// Ajouter d'autres méthodes au besoin
+}
