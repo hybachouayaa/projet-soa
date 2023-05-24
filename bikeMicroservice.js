@@ -1,4 +1,5 @@
 // bikeMicroservice.js
+// graphql
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 var mysql = require('mysql');

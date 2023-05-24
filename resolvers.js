@@ -1,3 +1,4 @@
+
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
@@ -46,7 +47,7 @@ const resolvers = {
         },
         bikes: () => {
             // Effectuer un appel gRPC au microservice de bikes
-            const client = new bikeProto.bikeService('localhost:50051',
+            const client = new bikeProto.BikeService('localhost:50051',
                 grpc.credentials.createInsecure());
             return new Promise((resolve, reject) => {
                 client.searchBikes({}, (err, response) => {

@@ -1,3 +1,5 @@
+// graphql
+
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const mysql = require('mysql');
@@ -43,10 +45,11 @@ const carService = {
         pool.query(searchQuery, values, (error, results) => {
             if (error) {
                 callback(error);
-            } else {
-                const cars = results;
-                callback(null, { cars });
-            }
+             } 
+             else {
+                 const cars = results;
+                 callback(null, { cars });
+             }
         });
     },
     createCar: (call, callback) => {
