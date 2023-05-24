@@ -28,13 +28,20 @@ message CreateBikeRequest {
   message CreateBikeResponse {
     Bike bike = 1;
   }
+message Deletebikerequest{
+  string bike_id = 1;
+}
 
+message Deletebikeresponse{
+
+}
   
 // Définition du service de films
 service BikeService {
     rpc GetBike(GetBikeRequest) returns (GetBikeResponse);
     rpc SearchBikes(SearchBikesRequest) returns (SearchBikesResponse);
     rpc CreateBike(CreateBikeRequest) returns (CreateBikeResponse);
+    rpc Deletebike(Deletebikerequest) returns (Deletebikeresponse);
 
 // Ajouter d'autres méthodes au besoin
 }

@@ -84,7 +84,21 @@ app.get('/bikes/:id', (req, res) => {
         }
     });
 });
-
+app.delete("/bikes/:id", (req, res) => {
+    const client = new bikeProto.BikeService(
+      "localhost:50051",
+      grpc.credentials.createInsecure()
+    );
+    const id = req.params.id;
+    const request = { bike_id: id };
+    client.Deletebike(request, (err, response) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.json(response);
+      }
+    });
+  });
 app.get('/cars', (req, res) => {
     const client = new carProto.CarService('localhost:50052',
         grpc.credentials.createInsecure());

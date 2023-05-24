@@ -66,24 +66,20 @@ const bikeService = {
             }
         });
     },
-    deleteBike: (call, callback) => {
-        const { id } = call.request;
+    Deletebike: (call, callback) => {
+        const { bike_id } = call.request;
         const query = 'DELETE FROM bikes WHERE id = ?';
-        const values = [id];
-    
+        const values = [bike_id];
+      
         pool.query(query, values, (error, results) => {
-            if (error) {
-                callback(error);
-            } else {
-                const affectedRows = results.affectedRows;
-                if (affectedRows > 0) {
-                    callback(null, { success: true });
-                } else {
-                    callback({ message: 'Bike not found' });
-                }
-            }
+          if (error) {
+            callback(error);
+          } else {
+            const success = results.affectedRows > 0;
+            callback(null, { success });
+          }
         });
-    }
+      },
     
 };
 
